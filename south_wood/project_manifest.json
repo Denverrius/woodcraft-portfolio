@@ -1,0 +1,50 @@
+{
+  "project_name": "SOUTH WOOD (Южный Массив)",
+  "niche": "Премиальная мебель на заказ по индивидуальным размерам",
+  "city": "Ростов-на-Дону",
+  "style": {
+    "theme": "light-mediterranean-minimalism",
+    "primary_bg": "#fbf9f5",
+    "secondary_bg": "#f4efe6",
+    "card_bg": "#ffffff",
+    "accent_color": "#c5a059",
+    "text_primary": "#2c2723",
+    "text_secondary": "#786f66",
+    "fonts": {
+      "display": "Playfair Display",
+      "body": "Inter"
+    }
+  },
+  "offer": {
+    "h1": "Авторская мебель из массива и МДФ в Ростове-на-Дону",
+    "subtitle": "Создаем кухни, гардеробные и мебель для дома по индивидуальным размерам. 3D-проект и замер — бесплатно.",
+    "guarantees": ["Гарантия 5 лет", "Собственное производство в Ростове", "Сроки от 14 дней"],
+    "usp": "Средиземноморская эстетика, экологичные лаки, немецкая фурнитура Blum"
+  },
+  "portfolio_requirements": {
+    "min_items_per_category": 3,
+    "total_items": 9,
+    "interactive_3d_orbit": true,
+    "categories": [
+      { "id": "kitchens", "name": "Кухни", "count": 3 },
+      { "id": "wardrobes", "name": "Гардеробные и Шкафы", "count": 3 },
+      { "id": "living", "name": "Гостиные и ТВ-зоны", "count": 3 }
+    ]
+  },
+  "required_features": [
+    "hero-video",
+    "quiz-4-steps",
+    "live-calculator",
+    "ai-chatbot-widget",
+    "portfolio-showroom-9-items",
+    "scroll-bound-3d-orbit-modal",
+    "free-3d-project-cta"
+  ],
+  "contacts": {
+    "phone": "+7 (863) 200-34-56",
+    "whatsapp": "79205022779",
+    "telegram": "@den_dev82",
+    "address": "г. Ростов-на-Дону, ул. Доватора, 150"
+  },
+  "status": "briefed"
+}

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Студия премиального дизайна и ремонта квартир ART.RENOVATE. Создаем гармоничные интерьеры «под ключ»." />
+    <title>ART.RENOVATE — Студия интерьерного дизайна и ремонта</title>
+    
+    <!-- Google Fonts: Playfair Display for titles (Serif), Inter for body (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <script type="module" crossorigin src="/woodcraft-portfolio/renovation/assets/index-POTFLjxM.js"></script>
+    <link rel="stylesheet" crossorigin href="/woodcraft-portfolio/renovation/assets/index-CZdDWF-I.css">
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-container">
+        <a href="#" class="logo">ART<span class="logo-dot">.</span>RENOVATE</a>
+        <nav class="nav">
+          <a href="#about" class="nav-link">Концепция</a>
+          <a href="#calc" class="nav-link">Калькулятор</a>
+          <a href="#portfolio" class="nav-link">Проекты</a>
+          <a href="#contacts" class="nav-link">Контакты</a>
+        </nav>
+        <div class="header-contacts">
+          <a href="tel:+79205022779" class="phone-link">+7 (920) 502-27-79</a>
+          <a href="https://t.me/den_dev82" target="_blank" class="btn btn-outline btn-sm header-btn">Обсудить проект</a>
+        </div>
+        <button class="burger-menu" id="burgerBtn" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#about" class="mobile-link">Концепция</a>
+      <a href="#calc" class="mobile-link">Калькулятор</a>
+      <a href="#portfolio" class="mobile-link">Проекты</a>
+      <a href="#contacts" class="mobile-link">Контакты</a>
+      <a href="tel:+79205022779" class="phone-link">+7 (920) 502-27-79</a>
+      <a href="https://t.me/den_dev82" target="_blank" class="btn btn-primary">Telegram</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <span class="hero-tagline">Архитектурный подход к пространству</span>
+          <h1 class="hero-title">Эстетика минимализма в вашем интерьере</h1>
+          <p class="hero-description">
+            Разрабатываем индивидуальные дизайн-проекты и реализуем ремонт квартир под ключ в Липецке и Москве. Создаем функциональное жилье с чистыми линиями и натуральными материалами.
+          </p>
+          <div class="hero-actions">
+            <a href="#calc" class="btn btn-primary btn-lg">Узнать бюджет проекта</a>
+            <a href="#portfolio" class="btn btn-outline btn-lg">Посмотреть портфолио</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">12 лет</span>
+              <span class="stat-label">создаем уют</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">95%</span>
+              <span class="stat-label">довольных клиентов</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-img-card">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop" alt="Светлая минималистичная гостиная" class="hero-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept / About -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Наша концепция</span>
+          <h2 class="section-title">Простота, экологичность, функциональность</h2>
+        </div>
+        <div class="grid grid-3">
+          <div class="about-card">
+            <div class="card-num">01/</div>
+            <h3 class="card-title">Чистота форм</h3>
+            <p class="card-text">
+              Мы избавляемся от лишнего шума. Скрытые двери, встроенное освещение, ровные плоскости и отсутствие визуального беспорядка.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="card-num">02/</div>
+            <h3 class="card-title">Честные материалы</h3>
+            <p class="card-text">
+              Используем в отделке натуральное дерево, камень, металл, качественный текстиль. Никаких дешевых пластиковых имитаций.
+            </p>
+          </div>
+          <div class="about-card">
+            <div class="card-num">03/</div>
+            <h3 class="card-title">Надзор дизайнера</h3>
+            <p class="card-text">
+              Следим за ходом ремонтных работ от первого кирпича до расстановки мебели, гарантируя 100% соответствие чертежам.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Calculator (Quiz) -->
+    <section class="calc-section" id="calc">
+      <div class="container">
+        <div class="quiz-wrapper">
+          <div class="quiz-header">
+            <div class="quiz-info">
+              <h2 class="quiz-title">Рассчитать стоимость ремонта</h2>
+              <p class="quiz-subtitle">Ответьте на вопросы, чтобы узнать ориентировочный бюджет и сроки реализации</p>
+            </div>
+            <div class="quiz-progress-wrapper">
+              <div class="progress-text">Шаг <span id="currentStep">1</span> из 4</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 25%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 1: Property Type -->
+          <div class="quiz-step active" data-step="1">
+            <h3 class="step-title">1. Тип вашего объекта?</h3>
+            <div class="grid grid-3 option-grid">
+              <label class="quiz-option">
+                <input type="radio" name="propertyType" value="Новостройка" data-base="14000" checked />
+                <span class="option-card">
+                  <span class="option-num">A.</span>
+                  <span class="option-label">Новостройка</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="propertyType" value="Вторичное жилье" data-base="16500" />
+                <span class="option-card">
+                  <span class="option-num">B.</span>
+                  <span class="option-label">Вторичное жилье</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="propertyType" value="Дом / Коттедж" data-base="18000" />
+                <span class="option-card">
+                  <span class="option-num">C.</span>
+                  <span class="option-label">Загородный дом</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 2: Area -->
+          <div class="quiz-step" data-step="2">
+            <h3 class="step-title">2. Выберите площадь помещения?</h3>
+            <div class="grid grid-3 option-grid">
+              <label class="quiz-option">
+                <input type="radio" name="propertyArea" value="До 50 кв.м." data-factor="45" checked />
+                <span class="option-card">
+                  <span class="option-num">до 50 м²</span>
+                  <span class="option-label">Малая квартира</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="propertyArea" value="50-100 кв.м." data-factor="75" />
+                <span class="option-card">
+                  <span class="option-num">50-100 м²</span>
+                  <span class="option-label">Средняя квартира / Дом</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="propertyArea" value="Более 100 кв.м." data-factor="120" />
+                <span class="option-card">
+                  <span class="option-num">100+ м²</span>
+                  <span class="option-label">Просторные апартаменты</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 3: Style -->
+          <div class="quiz-step" data-step="3">
+            <h3 class="step-title">3. Желаемый стиль отделки?</h3>
+            <div class="grid grid-3 option-grid">
+              <label class="quiz-option">
+                <input type="radio" name="interiorStyle" value="Современный минимализм" data-mult="1.0" checked />
+                <span class="option-card">
+                  <span class="option-num">01.</span>
+                  <span class="option-label">Минимализм</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="interiorStyle" value="Неоклассика" data-mult="1.2" />
+                <span class="option-card">
+                  <span class="option-num">02.</span>
+                  <span class="option-label">Неоклассика</span>
+                </span>
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="interiorStyle" value="Авторский дизайн" data-mult="1.4" />
+                <span class="option-card">
+                  <span class="option-num">03.</span>
+                  <span class="option-label">Премиум-дизайн</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Step 4: Contact & Display Price -->
+          <div class="quiz-step" data-step="4">
+            <h3 class="step-title">4. Предварительный расчет стоимости реализации</h3>
+            <div class="quiz-last-step-grid">
+              <div class="price-box">
+                <h4 class="price-box-title">Ориентировочная сметная стоимость:</h4>
+                <div class="price-value"><span id="estimatedPrice">0</span> ₽</div>
+                <p class="price-note-text">
+                  Стоимость включает в себя дизайн-проект, черновые материалы и все отделочные работы «под ключ».
+                </p>
+              </div>
+              <form class="quiz-form" id="quizContactForm">
+                <h4 class="price-box-title">Получить подробную смету и дизайн-подборку:</h4>
+                <input type="text" id="quizName" required placeholder="Ваше имя" class="form-input" />
+                <input type="tel" id="quizPhone" required placeholder="Номер телефона" class="form-input" />
+                <button type="submit" class="btn btn-primary btn-block">Получить расчет и консультацию</button>
+                <p class="privacy-note">Отправляя форму, вы даете согласие на обработку персональных данных.</p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Navigation Footer -->
+          <div class="quiz-navigation">
+            <button class="btn btn-outline" id="prevBtn" disabled>Назад</button>
+            <button class="btn btn-primary" id="nextBtn">Далее</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Портфолио</span>
+          <h2 class="section-title">Наши реализованные объекты</h2>
+        </div>
+
+        <!-- Filters -->
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">Все объекты</button>
+          <button class="filter-btn" data-filter="living">Гостиные</button>
+          <button class="filter-btn" data-filter="bath">Санузлы</button>
+        </div>
+
+        <div class="grid grid-3 portfolio-grid">
+          <!-- Item 1 -->
+          <div class="portfolio-item" data-category="living">
+            <div class="item-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200&auto=format&fit=crop" alt="Скандинавский интерьер" class="item-img" />
+              <div class="item-hover-overlay">
+                <span class="item-zoom-icon">🔍</span>
+              </div>
+            </div>
+            <div class="item-info">
+              <span class="item-tag">Гостиная</span>
+              <h3 class="item-title">Апартаменты в скандинавском стиле</h3>
+              <p class="item-desc">Мягкие бежевые тона, натуральный дубовый паркет, скрытые световые линии в потолке.</p>
+              <div class="item-meta">
+                <span>Площадь: 78 м²</span>
+                <span>Срок: 3 мес.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="portfolio-item" data-category="bath">
+            <div class="item-img-wrapper">
+              <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=1200&auto=format&fit=crop" alt="Ванная комната минимализм" class="item-img" />
+              <div class="item-hover-overlay">
+                <span class="item-zoom-icon">🔍</span>
+              </div>
+            </div>
+            <div class="item-info">
+              <span class="item-tag">Санузел</span>
+              <h3 class="item-title">Минималистичная ванная из керамогранита</h3>
+              <p class="item-desc">Встроенная инсталляция, столешница из натурального камня, скрытые шкафчики.</p>
+              <div class="item-meta">
+                <span>Площадь: 6.5 м²</span>
+                <span>Срок: 3 нед.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacts & Consultation -->
+    <section class="contacts" id="contacts">
+      <div class="container">
+        <div class="contacts-wrapper">
+          <div class="contacts-content">
+            <h2 class="contacts-title">Начните ремонт мечты</h2>
+            <p class="contacts-desc">
+              Запишитесь на встречу в нашей студии или пригласите дизайнера на объект для проведения замеров.
+            </p>
+            <div class="contacts-info">
+              <div class="info-block">
+                <div class="info-label">Телефон:</div>
+                <a href="tel:+79205022779" class="info-val">+7 (920) 502-27-79</a>
+              </div>
+              <div class="info-block">
+                <div class="info-label">Для связи в мессенджерах:</div>
+                <a href="https://t.me/den_dev82" target="_blank" class="info-val">@den_dev82 (Telegram)</a>
+              </div>
+            </div>
+          </div>
+          <form class="contacts-form" id="consultationForm">
+            <h3 class="form-title">Заявка на консультацию</h3>
+            <input type="text" id="consName" required placeholder="Ваше имя" class="form-input" />
+            <input type="tel" id="consPhone" required placeholder="Номер телефона" class="form-input" />
+            <button type="submit" class="btn btn-primary btn-block">Отправить заявку</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-brand">
+          <a href="#" class="logo">ART<span class="logo-dot">.</span>RENOVATE</a>
+          <p class="footer-tag">Проектирование и реализация качественных современных интерьеров.</p>
+        </div>
+        <div class="footer-nav">
+          <a href="#about" class="footer-link">Концепция</a>
+          <a href="#calc" class="footer-link">Калькулятор</a>
+          <a href="#portfolio" class="footer-link">Проекты</a>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 ART.RENOVATE. Все права защищены.</p>
+          <p class="developer">Дизайн и разработка: <a href="https://t.me/den_dev82" target="_blank">@den_dev82</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+      <div class="modal-card">
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+        <div class="modal-icon">🏡</div>
+        <h3 class="modal-title">Заявка принята</h3>
+        <p class="modal-text">
+          Дизайнер-архитектор свяжется с вами в течение получаса для обсуждения деталей вашего проекта и планировки.
+        </p>
+        <a href="https://t.me/den_dev82" target="_blank" class="btn btn-primary">Связаться в Telegram</a>
+      </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="modal-overlay" id="lightboxModal">
+      <div class="lightbox-card">
+        <button class="modal-close" id="lightboxCloseBtn">&times;</button>
+        <img src="" alt="" class="lightbox-img" id="lightboxImg" />
+      </div>
+    </div>
+
+  </body>
+</html>

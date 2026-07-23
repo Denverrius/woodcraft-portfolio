@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SOUTH WOOD — Премиальная авторская мебель из массива и МДФ в Ростове-на-Дону. Интерактивный 3D Showroom с управлением скроллом, квиз и замер бесплатно." />
+  <title>SOUTH WOOD — Мебель из массива & МДФ в Ростове-на-Дону</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-primary: #fbf9f5;
+      --bg-secondary: #f4efe6;
+      --bg-card: #ffffff;
+      --border-color: #e5dec9;
+      --border-focus: #c5a059;
+      
+      --accent-gold: #c5a059;
+      --accent-gold-hover: #b08c46;
+      --accent-amber: #d99b26;
+      --text-primary: #2c2723;
+      --text-secondary: #786f66;
+      --text-muted: #a09589;
+      
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-soft: 0 10px 30px rgba(44, 39, 35, 0.05);
+      --shadow-hover: 0 18px 40px rgba(44, 39, 35, 0.12);
+      --radius: 14px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; font-size:16px; background-color:var(--bg-primary); color:var(--text-primary); font-family:var(--font-body); }
+    body { overflow-x:hidden; line-height:1.6; }
+
+    .container { max-width:1240px; margin:0 auto; padding:0 1.5rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; padding:0.9rem 1.8rem; font-family:var(--font-body); font-weight:600; border-radius:8px; cursor:pointer; transition:var(--transition); text-decoration:none; border:none; font-size:1rem; gap:0.5rem; }
+    .btn-primary { background:var(--accent-gold); color:#ffffff; box-shadow:0 4px 15px rgba(197, 160, 89, 0.35); }
+    .btn-primary:hover { background:var(--accent-gold-hover); transform:translateY(-2px); box-shadow:0 8px 25px rgba(197, 160, 89, 0.45); }
+    .btn-outline { background:transparent; border:1px solid var(--accent-gold); color:var(--accent-gold); }
+    .btn-outline:hover { background:rgba(197, 160, 89, 0.08); transform:translateY(-2px); }
+    .btn-sm { padding:0.5rem 1.1rem; font-size:0.875rem; }
+    .btn-lg { padding:1.15rem 2.4rem; font-size:1.05rem; }
+
+    /* Header */
+    .header { position:fixed; top:0; left:0; right:0; z-index:1000; background:rgba(251, 249, 245, 0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border-color); transition:var(--transition); }
+    .header-container { height:76px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-family:var(--font-title); font-weight:700; font-size:1.65rem; color:var(--text-primary); text-decoration:none; letter-spacing:-0.01em; }
+    .logo-accent { color:var(--accent-gold); font-style:italic; }
+    .nav { display:flex; gap:2.2rem; }
+    .nav-link { color:var(--text-secondary); text-decoration:none; font-weight:500; transition:var(--transition); }
+    .nav-link:hover { color:var(--accent-gold); }
+    .header-contacts { display:flex; align-items:center; gap:1.5rem; }
+    .phone-link { font-family:var(--font-body); font-weight:600; color:var(--text-primary); text-decoration:none; }
+    .phone-link:hover { color:var(--accent-gold); }
+
+    .burger-menu { display:none; flex-direction:column; justify-content:space-between; width:26px; height:20px; background:transparent; border:none; cursor:pointer; }
+    .burger-menu span { width:100%; height:2px; background:var(--text-primary); transition:var(--transition); }
+
+    .mobile-nav { position:fixed; top:76px; left:0; right:0; background:var(--bg-secondary); padding:2rem; display:none; flex-direction:column; gap:1.25rem; z-index:999; border-bottom:1px solid var(--border-color); }
+    .mobile-nav.active { display:flex; }
+    .mobile-link { font-size:1.15rem; font-weight:600; color:var(--text-primary); text-decoration:none; }
+
+    /* Hero Section */
+    .hero { position:relative; padding-top:160px; padding-bottom:100px; overflow:hidden; background:var(--bg-primary); }
+    .hero-video-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; opacity:0.25; pointer-events:none; }
+    .hero-bg-overlay { position:absolute; inset:0; background:radial-gradient(circle at 70% 30%, rgba(197, 160, 89, 0.08) 0%, transparent 60%); z-index:1; }
+    .hero-container { position:relative; z-index:2; display:grid; grid-template-columns:1.1fr 0.9fr; align-items:center; gap:4rem; }
+    
+    .hero-tag { display:inline-block; padding:0.35rem 0.9rem; background:rgba(197, 160, 89, 0.12); border:1px solid rgba(197, 160, 89, 0.3); border-radius:30px; color:var(--accent-gold-hover); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:1.25rem; }
+    .hero-title { font-family:var(--font-title); font-size:3.2rem; line-height:1.18; margin-bottom:1.25rem; color:var(--text-primary); font-weight:600; }
+    .hero-description { font-size:1.1rem; color:var(--text-secondary); margin-bottom:2.2rem; max-width:540px; }
+    .hero-actions { display:flex; gap:1.25rem; margin-bottom:3rem; }
+    
+    .hero-stats { display:flex; gap:2.5rem; border-top:1px solid var(--border-color); padding-top:1.75rem; }
+    .stat-num { font-family:var(--font-title); font-size:1.8rem; font-weight:700; color:var(--accent-gold); line-height:1; }
+    .stat-label { font-size:0.825rem; color:var(--text-secondary); }
+
+    .hero-img-card { position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow-hover); border:1px solid var(--border-color); }
+    .hero-img { width:100%; height:470px; object-fit:cover; display:block; transition:transform 8s ease; }
+    .hero-img-card:hover .hero-img { transform:scale(1.05); }
+
+    /* Section Headers */
+    .section-header { text-align:center; margin-bottom:3.5rem; }
+    .section-tag { color:var(--accent-gold); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.12em; display:block; margin-bottom:0.5rem; }
+    .section-title { font-family:var(--font-title); font-size:2.4rem; color:var(--text-primary); }
+
+    /* Showroom Portfolio Section */
+    .portfolio-section { padding:100px 0; background:var(--bg-secondary); }
+    .portfolio-filters { display:flex; justify-content:center; gap:0.75rem; margin-bottom:3rem; flex-wrap:wrap; }
+    .filter-btn { background:var(--bg-card); border:1px solid var(--border-color); color:var(--text-secondary); padding:0.65rem 1.6rem; border-radius:30px; font-weight:500; cursor:pointer; transition:var(--transition); font-size:0.95rem; }
+    .filter-btn.active, .filter-btn:hover { background:var(--accent-gold); border-color:var(--accent-gold); color:#ffffff; box-shadow:0 4px 15px rgba(197, 160, 89, 0.3); }
+
+    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(350px, 1fr)); gap:2rem; }
+    .portfolio-card { background:var(--bg-card); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border-color); box-shadow:var(--shadow-soft); transition:var(--transition); display:flex; flex-direction:column; }
+    .portfolio-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-hover); border-color:var(--accent-gold); }
+    .card-img-wrapper { position:relative; height:260px; overflow:hidden; }
+    .card-img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease; }
+    .portfolio-card:hover .card-img { transform:scale(1.08); }
+    .card-tag { position:absolute; top:1rem; left:1rem; background:rgba(251, 249, 245, 0.9); backdrop-filter:blur(6px); padding:0.35rem 0.8rem; border-radius:20px; font-size:0.75rem; font-weight:600; color:var(--accent-gold-hover); text-transform:uppercase; border:1px solid var(--border-color); }
+    
+    /* 3D Orbit Button on Card */
+    .btn-3d-orbit { position:absolute; bottom:1rem; right:1rem; background:rgba(44, 39, 35, 0.88); backdrop-filter:blur(8px); color:#ffffff; border:1px solid var(--accent-gold); padding:0.5rem 1rem; border-radius:20px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:var(--transition); display:flex; align-items:center; gap:0.4rem; z-index:5; }
+    .btn-3d-orbit:hover { background:var(--accent-gold); color:#ffffff; transform:scale(1.05); }
+
+    .card-body { padding:1.5rem; display:flex; flex-direction:column; flex-grow:1; }
+    .card-title { font-family:var(--font-title); font-size:1.35rem; margin-bottom:0.5rem; color:var(--text-primary); }
+    .card-desc { color:var(--text-secondary); font-size:0.9rem; line-height:1.55; margin-bottom:1.25rem; flex-grow:1; }
+    .card-meta { display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-color); padding-top:1rem; margin-top:auto; }
+    .card-price { font-family:var(--font-title); font-weight:700; font-size:1.2rem; color:var(--text-primary); }
+    .card-term { color:var(--text-muted); font-size:0.825rem; }
+
+    /* Interactive 3D Scroll-Bound Orbit Modal */
+    .orbit-modal { position:fixed; inset:0; z-index:10000; background:rgba(20, 17, 15, 0.95); backdrop-filter:blur(16px); display:none; align-items:center; justify-content:center; padding:1.5rem; }
+    .orbit-modal.active { display:flex; }
+    .orbit-box { position:relative; width:100%; max-width:960px; background:var(--bg-card); border-radius:24px; border:1px solid var(--border-color); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.6); display:flex; flex-direction:column; }
+    .orbit-header { padding:1.25rem 1.75rem; background:var(--bg-secondary); border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; }
+    .orbit-title { font-family:var(--font-title); font-size:1.3rem; font-weight:600; }
+    .orbit-close { background:transparent; border:none; font-size:1.75rem; cursor:pointer; color:var(--text-secondary); }
+    .orbit-viewport { position:relative; height:500px; background:#0c0a09; display:flex; align-items:center; justify-content:center; overflow:hidden; cursor:grab; user-select:none; touch-action:none; }
+    .orbit-viewport:active { cursor:grabbing; }
+    .orbit-video { width:100%; height:100%; object-fit:cover; pointer-events:none; }
+    .orbit-hint { position:absolute; bottom:1.25rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); color:#ffffff; padding:0.65rem 1.5rem; border-radius:30px; font-size:0.85rem; font-weight:500; display:flex; align-items:center; gap:0.6rem; border:1px solid rgba(255,255,255,0.2); pointer-events:none; white-space:nowrap; }
+    
+    .orbit-direction-badge { position:absolute; top:1.25rem; right:1.25rem; background:var(--accent-gold); color:#ffffff; padding:0.4rem 1rem; border-radius:20px; font-weight:700; font-size:0.85rem; letter-spacing:0.02em; }
+
+    /* Interactive Quiz Section */
+    .quiz-section { padding:100px 0; background:var(--bg-primary); }
+    .quiz-container { background:var(--bg-card); border-radius:20px; border:1px solid var(--border-color); box-shadow:var(--shadow-soft); padding:3.5rem; }
+    .quiz-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; border-bottom:1px solid var(--border-color); padding-bottom:1.5rem; }
+    .quiz-progress-bar { height:6px; background:var(--bg-secondary); border-radius:3px; overflow:hidden; width:220px; }
+    .quiz-progress-fill { height:100%; background:var(--accent-gold); width:25%; transition:width 0.4s ease; }
+    .quiz-step { display:none; }
+    .quiz-step.active { display:block; }
+    .step-title { font-family:var(--font-title); font-size:1.5rem; margin-bottom:1.75rem; }
+    .options-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.25rem; margin-bottom:2.5rem; }
+    .option-card { padding:1.75rem 1.25rem; border-radius:12px; border:1px solid var(--border-color); background:var(--bg-primary); text-align:center; cursor:pointer; transition:var(--transition); user-select:none; }
+    .option-card:hover, .option-card.selected { border-color:var(--accent-gold); background:rgba(197, 160, 89, 0.06); transform:translateY(-2px); }
+    .option-icon { font-size:2.2rem; margin-bottom:0.75rem; display:block; }
+    .option-text { font-weight:600; font-size:0.95rem; }
+    .quiz-nav { display:flex; justify-content:space-between; border-top:1px solid var(--border-color); padding-top:1.75rem; }
+
+    /* Live Calculator Section */
+    .calc-section { padding:100px 0; background:var(--bg-secondary); }
+    .calc-box { background:var(--bg-card); border-radius:20px; border:1px solid var(--border-color); padding:3.5rem; display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:center; }
+    .calc-form { display:flex; flex-direction:column; gap:1.5rem; }
+    .form-group label { display:block; font-weight:600; font-size:0.9rem; margin-bottom:0.5rem; color:var(--text-primary); }
+    .form-control { width:100%; padding:0.9rem 1.2rem; border-radius:8px; border:1px solid var(--border-color); background:var(--bg-primary); font-size:1rem; color:var(--text-primary); }
+    .form-control:focus { outline:none; border-color:var(--accent-gold); }
+    .calc-result { background:var(--bg-primary); border-radius:16px; border:1px solid var(--border-color); padding:2.5rem; text-align:center; }
+    .result-price { font-family:var(--font-title); font-size:2.8rem; font-weight:700; color:var(--accent-gold); margin:1rem 0; line-height:1; }
+
+    /* AI Chatbot Widget */
+    .chatbot-fab { position:fixed; bottom:2rem; right:2rem; width:62px; height:62px; border-radius:50%; background:var(--accent-gold); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:1.75rem; box-shadow:0 8px 25px rgba(197, 160, 89, 0.45); cursor:pointer; z-index:9000; transition:var(--transition); border:none; }
+    .chatbot-fab:hover { transform:scale(1.08); background:var(--accent-gold-hover); }
+    .chatbot-badge { position:absolute; top:-3px; right:-3px; width:14px; height:14px; background:#10b981; border-radius:50%; border:2px solid #ffffff; }
+
+    .chatbot-window { position:fixed; bottom:6rem; right:2rem; width:370px; height:500px; background:var(--bg-card); border-radius:20px; border:1px solid var(--border-color); box-shadow:0 20px 50px rgba(44, 39, 35, 0.2); z-index:9001; display:none; flex-direction:column; overflow:hidden; animation:chatIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .chatbot-window.active { display:flex; }
+    @keyframes chatIn { from { opacity:0; transform:translateY(20px) scale(0.95); } to { opacity:1; transform:translateY(0) scale(1); } }
+    
+    .chat-header { background:var(--bg-secondary); padding:1.2rem 1.5rem; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center; }
+    .chat-title { font-family:var(--font-title); font-size:1.15rem; font-weight:600; }
+    .chat-status { font-size:0.75rem; color:#10b981; display:flex; align-items:center; gap:0.35rem; }
+    .chat-status::before { content:''; display:inline-block; width:6px; height:6px; background:#10b981; border-radius:50%; }
+    .chat-close { background:transparent; border:none; font-size:1.5rem; cursor:pointer; color:var(--text-muted); }
+    .chat-body { padding:1.25rem; flex-grow:1; overflow-y:auto; display:flex; flex-direction:column; gap:1rem; background:var(--bg-primary); }
+    .chat-msg { max-width:85%; padding:0.8rem 1.1rem; border-radius:12px; font-size:0.875rem; line-height:1.45; }
+    .chat-msg.bot { background:var(--bg-card); border:1px solid var(--border-color); color:var(--text-primary); border-bottom-left-radius:2px; }
+    .chat-msg.user { background:var(--accent-gold); color:#ffffff; align-self:flex-end; border-bottom-right-radius:2px; }
+    .chat-chips { display:flex; flex-wrap:wrap; gap:0.5rem; padding:0.75rem 1.25rem; background:var(--bg-secondary); border-top:1px solid var(--border-color); }
+    .chip-btn { background:var(--bg-card); border:1px solid var(--border-color); padding:0.4rem 0.8rem; border-radius:15px; font-size:0.75rem; cursor:pointer; transition:var(--transition); color:var(--text-secondary); text-align:left; }
+    .chip-btn:hover { border-color:var(--accent-gold); color:var(--accent-gold); }
+
+    /* Footer */
+    .footer { background:#1e1a17; color:#f4efe6; padding:4rem 0 2rem; border-top:1px solid var(--border-color); }
+    .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1.5fr; gap:3rem; margin-bottom:3rem; }
+    .footer-logo { font-family:var(--font-title); font-size:1.6rem; color:#ffffff; text-decoration:none; margin-bottom:1rem; display:block; }
+    .footer-desc { color:#a09589; font-size:0.9rem; }
+    .footer-title { font-family:var(--font-title); font-size:1.1rem; color:#ffffff; margin-bottom:1.25rem; }
+    .footer-links { display:flex; flex-direction:column; gap:0.6rem; }
+    .footer-link { color:#a09589; text-decoration:none; font-size:0.9rem; transition:var(--transition); }
+    .footer-link:hover { color:var(--accent-gold); }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; text-align:center; color:#786f66; font-size:0.85rem; }
+
+    @media (max-width: 968px) {
+      .hero-container { grid-template-columns:1fr; text-align:center; gap:2.5rem; }
+      .hero-description { margin-left:auto; margin-right:auto; }
+      .hero-actions { justify-content:center; }
+      .hero-stats { justify-content:center; }
+      .calc-box { grid-template-columns:1fr; }
+      .footer-grid { grid-template-columns:1fr; text-align:center; }
+      .nav, .header-contacts { display:none; }
+      .burger-menu { display:flex; }
+      .orbit-viewport { height:360px; }
+    }
+    @media (max-width: 576px) {
+      .hero-title { font-size:2.1rem; }
+      .section-title { font-size:1.75rem; }
+      .hero-actions { flex-direction:column; }
+      .hero-actions .btn { width:100%; }
+      .hero-img { height:260px; }
+      .portfolio-grid { grid-template-columns:1fr; }
+      .quiz-container, .calc-box { padding:1.5rem 1rem; }
+      .chatbot-window { width:90%; right:5%; bottom:5rem; height:450px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">SOUTH <span class="logo-accent">WOOD</span></a>
+      <nav class="nav">
+        <a href="#about" class="nav-link">О мастерской</a>
+        <a href="#showroom" class="nav-link">Showroom 3D (9 моделей)</a>
+        <a href="#quiz" class="nav-link">Расчёт цены</a>
+        <a href="#calc" class="nav-link">Калькулятор</a>
+        <a href="#contacts" class="nav-link">Контакты</a>
+      </nav>
+      <div class="header-contacts">
+        <a href="tel:+78632003456" class="phone-link">+7 (863) 200-34-56</a>
+        <a href="https://wa.me/79205022779" target="_blank" class="btn btn-primary btn-sm">WhatsApp</a>
+      </div>
+      <button class="burger-menu" id="burgerBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#about" class="mobile-link">О мастерской</a>
+    <a href="#showroom" class="mobile-link">Showroom 3D</a>
+    <a href="#quiz" class="mobile-link">Расчёт цены</a>
+    <a href="#calc" class="mobile-link">Калькулятор</a>
+    <a href="tel:+78632003456" class="phone-link">+7 (863) 200-34-56</a>
+    <a href="https://wa.me/79205022779" target="_blank" class="btn btn-primary">Написать в WhatsApp</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
+      <source src="/assets/videos/video_hero_bg.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <span class="hero-tag">Ростов-на-Дону • Ручная работа</span>
+        <h1 class="hero-title">Авторская мебель из массива и МДФ в Ростове</h1>
+        <p class="hero-description">
+          Создаём элитные кухни, гардеробные и мебель для дома по индивидуальным размерам. Средиземноморская эстетика, экологичные лаки и немецкая фурнитура Blum.
+        </p>
+        <div class="hero-actions">
+          <a href="#quiz" class="btn btn-primary btn-lg">Получить 3D-проект и замер</a>
+          <a href="#showroom" class="btn btn-outline btn-lg">Смотреть Showroom 3D</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">5 лет</div>
+            <div class="stat-label">гарантия на мебель</div>
+          </div>
+          <div>
+            <div class="stat-num">14 дней</div>
+            <div class="stat-label">минимальный срок</div>
+          </div>
+          <div>
+            <div class="stat-num">360°</div>
+            <div class="stat-label">интерактивный 3D-облёт</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-img-card">
+        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop" alt="Светлая премиум кухня SOUTH WOOD" class="hero-img" id="heroImg" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Showroom Portfolio Section (9 models with 3D Orbit) -->
+  <section class="portfolio-section" id="showroom">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Выставка работ (3D Интерактив)</span>
+        <h2 class="section-title">Showroom SOUTH WOOD — 3D Пролёт моделей</h2>
+      </div>
+
+      <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">Все модели (9)</button>
+        <button class="filter-btn" data-filter="kitchens">🍳 Кухни (3)</button>
+        <button class="filter-btn" data-filter="wardrobes">🚪 Гардеробные (3)</button>
+        <button class="filter-btn" data-filter="living">📺 Гостиные & ТВ (3)</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolioGrid">
+        
+        <!-- 1. Кухня 1 -->
+        <div class="portfolio-card" data-category="kitchens">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Кухня</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Средиземноморский Бриз', '/assets/videos/orbit_kitchen_1.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=800&auto=format&fit=crop" alt="Кухня Средиземноморский Бриз" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Средиземноморский Бриз</h3>
+            <p class="card-desc">Светлый массив дуба, столешница из итальянского мрамора, фурнитура Blum со доводчиками.</p>
+            <div class="card-meta">
+              <span class="card-price">от 185 000 ₽</span>
+              <span class="card-term">21 день</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Кухня 2 -->
+        <div class="portfolio-card" data-category="kitchens">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Кухня</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Олива & Массив Ясеня', '/assets/videos/orbit_kitchen_2.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Кухня Олива & Массив" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Олива & Массив Ясеня</h3>
+            <p class="card-desc">Матовые фасады цвета южной оливы с интегрированным островом из натурального ясеня.</p>
+            <div class="card-meta">
+              <span class="card-price">от 210 000 ₽</span>
+              <span class="card-term">25 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Кухня 3 -->
+        <div class="portfolio-card" data-category="kitchens">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Кухня</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Минимализм Графит & Орех', '/assets/videos/orbit_kitchen_3.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop" alt="Кухня Минимализм Графит" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Минимализм Графит & Орех</h3>
+            <p class="card-desc">Шпон американского ореха в сочетании с графитовыми фасадами. Скрытый профиль Gola.</p>
+            <div class="card-meta">
+              <span class="card-price">от 240 000 ₽</span>
+              <span class="card-term">30 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Гардеробная 1 -->
+        <div class="portfolio-card" data-category="wardrobes">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Гардеробная</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Прованс Снег', '/assets/videos/orbit_wardrobe_1.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1558882224-dda166733046?q=80&w=800&auto=format&fit=crop" alt="Гардеробная Прованс Снег" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Прованс Снег</h3>
+            <p class="card-desc">Открытая гардеробная система из белоснежного ясеня. Остров с бархатными органайзерами.</p>
+            <div class="card-meta">
+              <span class="card-price">от 145 000 ₽</span>
+              <span class="card-term">18 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Гардеробная 2 -->
+        <div class="portfolio-card" data-category="wardrobes">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Шкаф</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Шкаф Золотой Песок', '/assets/videos/orbit_wardrobe_2.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800&auto=format&fit=crop" alt="Шкаф Золотой Песок" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Шкаф «Золотой Песок»</h3>
+            <p class="card-desc">Тонированные стеклянные фасады в бронзовом профиле с контурной LED-подсветкой.</p>
+            <div class="card-meta">
+              <span class="card-price">от 165 000 ₽</span>
+              <span class="card-term">20 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Гардеробная 3 -->
+        <div class="portfolio-card" data-category="wardrobes">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Гардеробная</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Встроенная система Эко-Лофт', '/assets/videos/orbit_wardrobe_3.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop" alt="Система Эко-Лофт" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Встроенная система «Эко-Лофт»</h3>
+            <p class="card-desc">Массив карельской сосны с фактурным брашированием. Латунные вставки и выдвижные вешала.</p>
+            <div class="card-meta">
+              <span class="card-price">от 130 000 ₽</span>
+              <span class="card-term">14 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Гостиная 1 -->
+        <div class="portfolio-card" data-category="living">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Гостиная</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('ТВ-консоль Ростовская Усадьба', '/assets/videos/orbit_living_1.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="ТВ-консоль Ростовская Усадьба" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Ростовская Усадьба</h3>
+            <p class="card-desc">Парящая ТВ-консоль из цельного дуба с потайными ящиками. Резная акустическая решетка.</p>
+            <div class="card-meta">
+              <span class="card-price">от 95 000 ₽</span>
+              <span class="card-term">14 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Гостиная 2 -->
+        <div class="portfolio-card" data-category="living">
+          <div class="card-img-wrapper">
+            <span class="card-tag">ТВ-зона</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Стеллаж Арт-Модерн', '/assets/videos/orbit_living_2.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop" alt="Стеллажная система Арт-Модерн" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Стеллаж «Арт-Модерн»</h3>
+            <p class="card-desc">Архитектурная витрина для гостиной со скрытым крепежом к стене из беленого дуба.</p>
+            <div class="card-meta">
+              <span class="card-price">от 115 000 ₽</span>
+              <span class="card-term">16 дней</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Гостиная 3 -->
+        <div class="portfolio-card" data-category="living">
+          <div class="card-img-wrapper">
+            <span class="card-tag">Журнальный стол</span>
+            <button class="btn-3d-orbit" onclick="open3DOrbit('Группа Южное Солнце', '/assets/videos/orbit_living_3.mp4')">🌀 3D Облёт 360°</button>
+            <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?q=80&w=800&auto=format&fit=crop" alt="Журнальная группа Южное Солнце" class="card-img" />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Группа «Южное Солнце»</h3>
+            <p class="card-desc">Сет из двух журнальных столиков с торцевым срезом дуба и эпоксидной заливкой.</p>
+            <div class="card-meta">
+              <span class="card-price">от 45 000 ₽</span>
+              <span class="card-term">10 дней</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 3D Scroll-Bound Orbit Modal -->
+  <div class="orbit-modal" id="orbitModal">
+    <div class="orbit-box">
+      <div class="orbit-header">
+        <div>
+          <div class="orbit-title" id="orbitTitle">3D Облёт Модели</div>
+          <div style="font-size:0.8rem; color:var(--text-secondary);">Интерактивное вращение 360° со скролл-скраббингом</div>
+        </div>
+        <button class="orbit-close" onclick="close3DOrbit()">✕</button>
+      </div>
+      <div class="orbit-viewport" id="orbitViewport">
+        <span class="orbit-direction-badge" id="orbitSpeedBadge">Пауза • 0.0x</span>
+        <video class="orbit-video" id="orbitVideo" loop muted playsinline preload="auto">
+          <source src="" type="video/mp4" id="orbitVideoSrc" />
+        </video>
+        <div class="orbit-hint">
+          <span>🖱️ Скролл вперёд = Пролёт вперёд | Скролл назад = Пролёт назад (Свайп 📱)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Quiz Section -->
+  <section class="quiz-section" id="quiz">
+    <div class="container">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <div>
+            <span class="section-tag">Расчёт стоимости за 1 минуту</span>
+            <h2 class="quiz-title">Ответьте на 4 вопроса и получите бесплатный 3D-проект</h2>
+          </div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quizProgress"></div>
+          </div>
+        </div>
+
+        <div class="quiz-step active" data-step="1">
+          <h3 class="step-title">1. Какое изделие вы планируете заказать?</h3>
+          <div class="options-grid">
+            <div class="option-card" onclick="selectQuizOption(1, 'Кухня')">
+              <span class="option-icon">🍳</span>
+              <span class="option-text">Кухня по размерам</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(1, 'Гардеробная / Шкаф')">
+              <span class="option-icon">🚪</span>
+              <span class="option-text">Гардеробная или Шкаф</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(1, 'ТВ-зона / Гостиная')">
+              <span class="option-icon">📺</span>
+              <span class="option-text">ТВ-зона / Мебель в гостиную</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(1, 'Комплексная мебель')">
+              <span class="option-icon">🏠</span>
+              <span class="option-text">Мебель во всю квартиру</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <h3 class="step-title">2. Предчтительный материал?</h3>
+          <div class="options-grid">
+            <div class="option-card" onclick="selectQuizOption(2, 'Массив Дуба / Ясень')">
+              <span class="option-icon">🌳</span>
+              <span class="option-text">Массив Дуба / Ясеня</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(2, 'Эмаль МДФ / Шпон')">
+              <span class="option-icon">✨</span>
+              <span class="option-text">Эмаль МДФ + Шпон</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(2, 'Комбинированный')">
+              <span class="option-icon">🎨</span>
+              <span class="option-text">Комбинированный вариант</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(2, 'Нужна консультация')">
+              <span class="option-icon">💡</span>
+              <span class="option-text">Посоветоваться с технологом</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <h3 class="step-title">3. Куда потребуется доставка и замер?</h3>
+          <div class="options-grid">
+            <div class="option-card" onclick="selectQuizOption(3, 'Ростов-на-Дону')">
+              <span class="option-icon">🏙️</span>
+              <span class="option-text">Ростов-на-Дону</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(3, 'Батайск / Аксай')">
+              <span class="option-icon">🏡</span>
+              <span class="option-text">Батайск / Аксай</span>
+            </div>
+            <div class="option-card" onclick="selectQuizOption(3, 'Ростовская область')">
+              <span class="option-icon">🚗</span>
+              <span class="option-text">Ростовская область</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="4">
+          <h3 class="step-title">4. Куда прислать готовый 3D-проект и предварительную смету?</h3>
+          <form onsubmit="submitQuiz(event)" style="display:flex; flex-direction:column; gap:1.25rem; max-width:480px;">
+            <input type="text" placeholder="Ваше имя" required class="form-control" id="quizName" />
+            <input type="tel" placeholder="+7 (___) ___-__-__" required class="form-control" id="quizPhone" />
+            <button type="submit" class="btn btn-primary btn-lg">Получить 3D-проект в WhatsApp</button>
+          </form>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn btn-outline btn-sm" id="prevBtn" onclick="prevQuizStep()" style="display:none;">← Назад</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Calculator Section -->
+  <section class="calc-section" id="calc">
+    <div class="container">
+      <div class="calc-box">
+        <div class="calc-form">
+          <span class="section-tag">Экспресс-расчёт</span>
+          <h2 class="section-title">Калькулятор стоимости мебели</h2>
+          
+          <div class="form-group">
+            <label>Тип изделия</label>
+            <select class="form-control" id="calcType" onchange="calculatePrice()">
+              <option value="kitchen">Прямая / Угловая кухня</option>
+              <option value="wardrobe">Встроенная гардеробная</option>
+              <option value="tv">ТВ-зона в гостиную</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Длина изделия (в метрах): <span id="lengthVal" style="color:var(--accent-gold); font-weight:700;">3.0 м</span></label>
+            <input type="range" min="1" max="8" step="0.5" value="3.0" class="form-control" id="calcLength" oninput="calculatePrice()" />
+          </div>
+
+          <div class="form-group">
+            <label>Материал фасадов</label>
+            <select class="form-control" id="calcMaterial" onchange="calculatePrice()">
+              <option value="oak">Массив Дуба (Премиум)</option>
+              <option value="ash">Массив Ясеня</option>
+              <option value="mdf">Эмаль МДФ + Шпон</option>
+              <option value="pine">Массив Карельской Сосны</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <span style="font-size:0.875rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-secondary);">Ориентировочная стоимость</span>
+          <div class="result-price" id="calcResultPrice">165 000 ₽</div>
+          <p style="font-size:0.875rem; color:var(--text-secondary); margin-bottom:1.75rem;">Включает: замер в Ростове, 3D-проект, изготовление, доставку и сборку.</p>
+          <a href="https://wa.me/79205022779?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D0%BB%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%B9%D1%82%D0%B5." target="_blank" class="btn btn-primary btn-block">Зафиксировать цену в WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive AI Chatbot Widget -->
+  <button class="chatbot-fab" onclick="toggleChatbot()" aria-label="Чат-помощник">
+    💬
+    <span class="chatbot-badge"></span>
+  </button>
+
+  <div class="chatbot-window" id="chatWindow">
+    <div class="chat-header">
+      <div>
+        <div class="chat-title">AI-Консультант SOUTH WOOD</div>
+        <div class="chat-status">В сети • Отвечает за 3 секунды</div>
+      </div>
+      <button class="chat-close" onclick="toggleChatbot()">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg bot">
+        Здравствуйте! Я умный помощник мастерской SOUTH WOOD в Ростове. Помогу узнать цены, выбрать дерево или оформить выезд замерщика. О чём хотите спросить?
+      </div>
+    </div>
+    <div class="chat-chips">
+      <button class="chip-btn" onclick="sendChatQuery('Сколько стоит замер в Аксае и Батайске?')">🚗 Замер в Ростове?</button>
+      <button class="chip-btn" onclick="sendChatQuery('Какое дерево лучше для кухни?')">🌳 Дуб или Ясень?</button>
+      <button class="chip-btn" onclick="sendChatQuery('Какие у вас сроки изготовления?')">⏱️ Сроки работы?</button>
+      <button class="chip-btn" onclick="sendChatQuery('Как получить 3D-проект?')">📐 Бесплатный 3D-проект</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="footer-logo">SOUTH <span style="color:var(--accent-gold); font-style:italic;">WOOD</span></a>
+          <p class="footer-desc">
+            Столярная мануфактура авторской мебели из массива и МДФ в Ростове-на-Дону. Экологичные материалы, гарантия 5 лет.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Навигация</div>
+          <div class="footer-links">
+            <a href="#showroom" class="footer-link">Showroom 3D (9 моделей)</a>
+            <a href="#quiz" class="footer-link">Расчет стоимости</a>
+            <a href="#calc" class="footer-link">Калькулятор</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Контакты в Ростове</div>
+          <div class="footer-links">
+            <span style="color:#a09589;">г. Ростов-на-Дону, ул. Доватора, 150</span>
+            <a href="tel:+78632003456" class="footer-link">+7 (863) 200-34-56</a>
+            <a href="https://wa.me/79205022779" class="footer-link">WhatsApp: +7 (920) 502-27-79</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 SOUTH WOOD Ростов-на-Дону. Все права защищены. Разработано в агентстве Дена.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar & Mobile Nav
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    burgerBtn.addEventListener('click', () => mobileNav.classList.toggle('active'));
+
+    // Showroom Filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+
+        portfolioCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* =================================================================
+       EXACT BIDIRECTIONAL SCROLL/TOUCH SCRUBBING SYSTEM FOR 3D ORBIT
+       -----------------------------------------------------------------
+       1. Wheel Down / Drag Up -> Video Plays FORWARD (CurrentTime += speed)
+       2. Wheel Up / Drag Down -> Video Plays BACKWARD (CurrentTime -= speed)
+       3. Speed maps directly to scroll velocity.
+    ================================================================= */
+    const orbitModal = document.getElementById('orbitModal');
+    const orbitVideo = document.getElementById('orbitVideo');
+    const orbitVideoSrc = document.getElementById('orbitVideoSrc');
+    const orbitTitle = document.getElementById('orbitTitle');
+    const orbitViewport = document.getElementById('orbitViewport');
+    const orbitSpeedBadge = document.getElementById('orbitSpeedBadge');
+
+    let targetTime = 0;
+    let currentTime = 0;
+    let animId = null;
+    let lastY = 0;
+    let isDragging = false;
+
+    function open3DOrbit(title, videoPath) {
+      orbitTitle.innerText = '3D Облёт: ' + title;
+      orbitVideoSrc.src = videoPath;
+      orbitVideo.load();
+      orbitVideo.pause(); // Ensure manual scrubbing control
+      orbitModal.classList.add('active');
+
+      targetTime = 0;
+      currentTime = 0;
+
+      if (!animId) {
+        animId = requestAnimationFrame(renderOrbitLoop);
+      }
+    }
+
+    function close3DOrbit() {
+      orbitModal.classList.remove('active');
+      orbitVideo.pause();
+    }
+
+    function renderOrbitLoop() {
+      if (orbitModal.classList.contains('active') && orbitVideo.duration) {
+        // Smooth Lerp Physics for bidirectional video Scrubbing
+        const delta = (targetTime - currentTime);
+        currentTime += delta * 0.18; // Smooth inertia interpolation
+
+        const duration = orbitVideo.duration;
+
+        // Loop handling across video duration
+        if (currentTime < 0) {
+          currentTime = (duration + (currentTime % duration)) % duration;
+          targetTime = currentTime;
+        }
+        if (currentTime >= duration) {
+          currentTime = currentTime % duration;
+          targetTime = currentTime;
+        }
+
+        // Set video timeline frame
+        orbitVideo.currentTime = currentTime;
+
+        // Display current Scrub Speed & Direction
+        const speed = (Math.abs(delta) * 2.5).toFixed(1);
+        if (Math.abs(delta) < 0.005) {
+          orbitSpeedBadge.innerText = 'Пауза • 0.0x';
+          orbitSpeedBadge.style.background = 'var(--accent-gold)';
+        } else if (delta > 0) {
+          orbitSpeedBadge.innerText = `Вперёд ► ${speed}x`;
+          orbitSpeedBadge.style.background = '#10b981'; // Green
+        } else {
+          orbitSpeedBadge.innerText = `Назад ◄ ${speed}x`;
+          orbitSpeedBadge.style.background = '#f59e0b'; // Amber
+        }
+      }
+
+      animId = requestAnimationFrame(renderOrbitLoop);
+    }
+
+    // 1. MOUSE WHEEL CONTROL: Scroll Down = FORWARD, Scroll Up = BACKWARD
+    orbitViewport.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const sensitivity = 0.0035; // Direct speed mapping to scroll
+      targetTime += e.deltaY * sensitivity;
+    }, { passive: false });
+
+    // 2. TOUCH & MOUSE DRAG CONTROL FOR MOBILE AND DESKTOP
+    orbitViewport.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      lastY = e.clientY;
+    });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const deltaY = e.clientY - lastY;
+      lastY = e.clientY;
+      const sensitivity = 0.009;
+      // Dragging Up = Move Forward, Dragging Down = Move Backward
+      targetTime -= deltaY * sensitivity;
+    });
+
+    window.addEventListener('pointerup', () => { isDragging = false; });
+
+    // Quiz & Calc logic
+    let currentStep = 1;
+    const quizAnswers = {};
+
+    function selectQuizOption(step, answer) {
+      quizAnswers['step' + step] = answer;
+      if (step < 4) { currentStep++; updateQuizView(); }
+    }
+
+    function prevQuizStep() {
+      if (currentStep > 1) { currentStep--; updateQuizView(); }
+    }
+
+    function updateQuizView() {
+      document.querySelectorAll('.quiz-step').forEach(step => step.classList.remove('active'));
+      document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('active');
+      document.getElementById('quizProgress').style.width = (currentStep * 25) + '%';
+      document.getElementById('prevBtn').style.display = currentStep > 1 ? 'inline-flex' : 'none';
+    }
+
+    function submitQuiz(e) {
+      e.preventDefault();
+      const name = document.getElementById('quizName').value;
+      const phone = document.getElementById('quizPhone').value;
+      alert(`Спасибо, ${name}! Ваши ответы записаны. Мы отправим 3D-проект на номер ${phone} в WhatsApp.`);
+    }
+
+    function calculatePrice() {
+      const type = document.getElementById('calcType').value;
+      const length = parseFloat(document.getElementById('calcLength').value);
+      const material = document.getElementById('calcMaterial').value;
+      
+      document.getElementById('lengthVal').innerText = length.toFixed(1) + ' м';
+
+      let basePrice = 45000;
+      if (type === 'wardrobe') basePrice = 38000;
+      if (type === 'tv') basePrice = 30000;
+
+      let matCoeff = 1.0;
+      if (material === 'oak') matCoeff = 1.4;
+      if (material === 'ash') matCoeff = 1.25;
+      if (material === 'mdf') matCoeff = 1.1;
+      if (material === 'pine') matCoeff = 0.95;
+
+      const total = Math.round(basePrice * length * matCoeff);
+      document.getElementById('calcResultPrice').innerText = total.toLocaleString('ru-RU') + ' ₽';
+    }
+
+    function toggleChatbot() {
+      document.getElementById('chatWindow').classList.toggle('active');
+    }
+
+    function sendChatQuery(query) {
+      const chatBody = document.getElementById('chatBody');
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.innerText = query;
+      chatBody.appendChild(userMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        if (query.includes('Замер')) {
+          botMsg.innerText = 'Замер по Ростову-на-Дону, Батайску и Аксаю у нас БЕСПЛАТНЫЙ при заказе!';
+        } else if (query.includes('дерево')) {
+          botMsg.innerText = 'Дуб — самый прочный материал (50+ лет). Ясень имеет отличную текстуру. Эмаль МДФ — идеальна для гладких фасадов.';
+        } else if (query.includes('сроки')) {
+          botMsg.innerText = 'Кухни — 21 день, гардеробные — 14-18 дней, ТВ-зоны — от 10 дней.';
+        } else {
+          botMsg.innerText = 'Отличный вопрос! Напишите нам в WhatsApp, и технолог ответит в течение 5 минут.';
+        }
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
